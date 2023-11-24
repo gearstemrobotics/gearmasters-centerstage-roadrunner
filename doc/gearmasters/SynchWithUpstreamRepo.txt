@@ -1,0 +1,5 @@
+git remote add upstream https://github.com/ftcwires/centerstage-road-runner.git
+git remote -v
+git fetch upstream
+git status
+git merge upstream/ReleaseBranch
