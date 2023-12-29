@@ -1,5 +1,8 @@
-git remote add upstream https://github.com/ftcwires/centerstage-road-runner.git
+git remote add upstream https://github.com/ftcwires/centerstage-road-runner.git [one-time; done]
+git status [make sure current branch is origin/ReleaseBranch]
 git remote -v
-git fetch upstream
+git fetch upstream [downloads upstream changes to local machine]
 git status
-git merge upstream/ReleaseBranch
+git merge upstream/ReleaseBranch [merges changes into origin/ReleaseBranch]
+git commit -m "Commit message" [may need to resolve merge conflicts]
+git push [update origin/ReleaseBranch on GitHub]

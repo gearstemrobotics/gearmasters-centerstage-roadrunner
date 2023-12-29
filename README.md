@@ -9,4 +9,4 @@ Update 12/26/2023
 Upgraded RoadRunner version to 1.10
 Added “FTC Wires Auto Open CV Vision” Autonomous Mode that includes Vision Processor using Open CV for Team Element Detection. 
 
-This is GearMasters fork of FTC WIRES fork of Acmerobotics's implementation of Road Runner 1.10 with examples of autonomous programs.
+This is a GearMasters fork of an FTC WIRES fork of an Acmerobotics implementation of RoadRunner in a cloned FtcRobotController 9.x repo.
