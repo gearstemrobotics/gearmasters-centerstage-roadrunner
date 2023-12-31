@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name = "Centerstage (Blocks to Java)")
+//@TeleOp(name = "Centerstage (Blocks to Java)")
 public class Centerstage extends LinearOpMode {
 
     private DcMotor BackLeft;
