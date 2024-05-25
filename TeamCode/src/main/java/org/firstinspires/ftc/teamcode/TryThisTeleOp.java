@@ -1,5 +1,7 @@
-package org.firstinspires.ftc.teamcode;
+/*package org.firstinspires.ftc.teamcode;
 
+import com.arcrobotics.ftclib.drivebase.MecanumDrive;
+import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -8,29 +10,35 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.util.Range;
+import com.arcrobotics.ftclib.drivebase.MecanumDrive;
 
 // Enigma code
 // https://github.com/BudsterGaming/centerstage-code-16265/tree/McGreen
 
-@TeleOp(name = "CenterstageJava")
-public class CenterstageJava extends LinearOpMode {
+@TeleOp(name = "TryThisTeleOp")
+public class TryThisTeleOp extends LinearOpMode {
     // Declare vars
     // timers
     private ElapsedTime runtime = new ElapsedTime();
 
+    int RevCoreHex_CPR = 288;
+    int RevCoreHex_RPM = 125;
+
     // motors
-    private DcMotor BackLeft;
-    private DcMotor FrontRight;
-    private DcMotor FrontLeft;
-    private DcMotor BackRight;
+    Motor BackLeft = new Motor(hardwareMap, "BackLeft", RevCoreHex_CPR, RevCoreHex_RPM);
+    Motor FrontLeft = new Motor(hardwareMap, "FrontLeft", RevCoreHex_CPR, RevCoreHex_RPM);
+    Motor BackRight = new Motor(hardwareMap, "BackRight", RevCoreHex_CPR, RevCoreHex_RPM);
+    Motor FrontRight = new Motor(hardwareMap, "BackRight", RevCoreHex_CPR, RevCoreHex_RPM);
     private DcMotor LeftPivot;
     private DcMotor RightPivot;
     private DcMotor Lift;
     //private DcMotor intake;
 
+    MecanumDrive mecanum = new MecanumDrive(FrontLeft, FrontRight, BackLeft, BackRight);
+
     // servos
     //private CRServo thingy1066;
-    private Servo Plane;
+    private Servo plane;
     private Servo LeftClaw;
     private Servo RightClaw;
     private CRServo Wrist;
@@ -66,68 +74,29 @@ public class CenterstageJava extends LinearOpMode {
     // Meccanum drive
     private void driveCode() {
         // mecanum drive
-        double forward = gamepad1.left_stick_y;
-        double strafe = -gamepad1.left_stick_x;
-        double turn = -gamepad1.right_stick_x;
+        mecanum.driveRobotCentric(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_y);
 
-        double denominator = Math.max(Math.abs(forward) + Math.abs(strafe) + Math.abs(turn), 1);
 
-        double FrontRightPower = (forward - strafe - turn) / denominator;
-        double FrontLeftPower = (forward + strafe + turn) / denominator;
-        double BackRightPower = (forward + strafe - turn) / denominator;
-        double BackLeftPower = (forward - strafe + turn) / denominator;
-
-        if (gamepad1.left_bumper) {
-            FrontRightPower = Range.clip(FrontRightPower, -0.4, 0.4);
-            FrontLeftPower = Range.clip(FrontLeftPower, -0.4, 0.4);
-            BackRightPower = Range.clip(BackRightPower, -0.4, 0.4);
-            BackLeftPower = Range.clip(BackLeftPower, -0.4, 0.4);
-        } else {
-            FrontRightPower = Range.clip(FrontRightPower, -1, 1);
-            FrontLeftPower = Range.clip(FrontLeftPower, -1, 1);
-            BackRightPower = Range.clip(BackRightPower, -1, 1);
-            BackLeftPower = Range.clip(BackLeftPower, -1, 1);
-        }
-
-        if (gamepad1.dpad_right) {
-            FrontRight.setPower(-1);
-            BackRight.setPower(1);
-            FrontLeft.setPower(1);
-            BackLeft.setPower(-1);
-        }
-        if (gamepad1.dpad_left) {
-            FrontRight.setPower(1);
-            BackRight.setPower(-1);
-            FrontLeft.setPower(-1);
-            BackLeft.setPower(1);
-        }
-
-        FrontRight.setPower(FrontRightPower);
-        FrontLeft.setPower(FrontLeftPower);
-        BackRight.setPower(BackRightPower);
-        BackLeft.setPower(BackLeftPower);
-
-    }
-
-    
     // launcher function
-    private void plane() {
+    /*private void plane() {
         if (gamepad2.dpad_up){
             Plane.setPosition(PLANE_SHOOT);
-        }
-
-    }
-
-    // arm function
-    private void arm(){
-        if (gamepad2.left_bumper) {
-            LeftPivot.setPower(-gamepad2.left_stick_y * 0.3);
-            RightPivot.setPower(-gamepad2.left_stick_y * 0.3);
         } else{
-            LeftPivot.setPower(-gamepad2.left_stick_y * 0.75);
-            RightPivot.setPower(-gamepad2.left_stick_y * 0.75);
+
         }
-    }
+    }aas
+*/
+/*
+    // arm function
+        private void arm(){
+            if (gamepad2.left_bumper) {
+                LeftPivot.setPower(-gamepad2.left_stick_y * 0.3);
+                RightPivot.setPower(-gamepad2.left_stick_y * 0.3);
+            } else{
+                LeftPivot.setPower(-gamepad2.left_stick_y * 0.75);
+                RightPivot.setPower(-gamepad2.left_stick_y * 0.75);
+            }
+        }
 
     // Lift function
     /*private void lift() {
@@ -139,14 +108,14 @@ public class CenterstageJava extends LinearOpMode {
         }
     }
      */
-
+/*
     //Lift function
     private void lift() {
         Lift.setPower(gamepad2.left_trigger);
         Lift.setPower(gamepad2.right_trigger * -1);
     }
 
-
+*/
     // claw variables
     //double LeftClawPosition = robot.LeftClaw.getPosition();
     //double RightClawPosition = robot.RightClaw.getPosition();
@@ -169,7 +138,7 @@ public class CenterstageJava extends LinearOpMode {
             }
         }
     }*/
-
+/*
     private void claws() {
         if (gamepad2.y){
             RightClaw.setPosition(RIGHT_CLAW_OPEN);
@@ -183,7 +152,7 @@ public class CenterstageJava extends LinearOpMode {
         if (gamepad2.a){
             LeftClaw.setPosition(LEFT_CLAW_CLOSE);
         }
-        }
+    }
 
 
     // wrist function
@@ -195,15 +164,15 @@ public class CenterstageJava extends LinearOpMode {
         if (gamepad2.right_bumper) {
             Wrist.setPosition(0.8);
         }*/
-    }
-
+    //}
+/*
     public void runOpMode() throws InterruptedException {
         // hardware maps
         BackLeft = hardwareMap.get(DcMotor.class, "BackLeft");
         FrontRight = hardwareMap.get(DcMotor.class, "FrontRight");
         FrontLeft = hardwareMap.get(DcMotor.class, "FrontLeft");
         //thingy1066 = hardwareMap.get(CRServo.class, "thingy -106.6");
-        Plane = hardwareMap.get(Servo.class, "Plane");
+        plane = hardwareMap.get(Servo.class, "plane");
         BackRight = hardwareMap.get(DcMotor.class, "BackRight");
         LeftPivot = hardwareMap.get(DcMotor.class, "LeftPivot");
         RightPivot = hardwareMap.get(DcMotor.class, "RightPivot");
@@ -253,3 +222,5 @@ public class CenterstageJava extends LinearOpMode {
         }
     }
 }
+
+*/

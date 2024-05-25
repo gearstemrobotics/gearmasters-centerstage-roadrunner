@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-@Autonomous(name = "NewRedCloseColorSensorAuto (Blocks to Java)")
+//@Autonomous(name = "NewRedCloseColorSensorAuto (Blocks to Java)")
 public class NewRedCloseColorSensorAuto extends LinearOpMode {
 
     private DcMotor FrontRight;

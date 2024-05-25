@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp(name = "DistanceSensorTest")
 public class DistanceSensorTest extends LinearOpMode{
-    private DistanceSensor Distance;
+    private DistanceSensor RedDistance;
 
     // center is 47-50 away
     // sides are 35-38 away
@@ -18,7 +18,7 @@ public class DistanceSensorTest extends LinearOpMode{
 
     @Override
     public void runOpMode() {
-        Distance = hardwareMap.get(DistanceSensor.class, "Distance");
+        RedDistance = hardwareMap.get(DistanceSensor.class, "RedDistance");
 
 
         // Put initialization blocks here.
@@ -27,7 +27,7 @@ public class DistanceSensorTest extends LinearOpMode{
             // Put run blocks here.
             while (opModeIsActive()) {
                 // Put loop blocks here.
-                telemetry.addData("Distance", Distance.getDistance(DistanceUnit.CM));
+                telemetry.addData("Distance", RedDistance.getDistance(DistanceUnit.CM));
                 telemetry.update();
             }
         }

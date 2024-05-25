@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import org.firstinspires.ftc.robotcore.external.JavaUtil;
 
-@Autonomous(name = "ThisOne (Blocks to Java)")
+//@Autonomous(name = "ThisOne (Blocks to Java)")
 public class ThisOne extends LinearOpMode {
 
     private DcMotor FrontRight;
